@@ -124,21 +124,7 @@ this.ScenarioInitialize(scenarioInfo);
 #line 17
  testRunner.When("Enter blank Email id", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line 18
- testRunner.Then("I am not able to login", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
-#line hidden
-            this.ScenarioCleanup();
-        }
-        
-        [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("04_Amazon Login")]
-        public virtual void _04_AmazonLogin()
-        {
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("04_Amazon Login", null, ((string[])(null)));
-#line 19
-this.ScenarioInitialize(scenarioInfo);
-            this.ScenarioStart();
-#line 20
- testRunner.Given("Go To Login Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+ testRunner.Then("I am not able to logins", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             this.ScenarioCleanup();
         }
