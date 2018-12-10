@@ -18,6 +18,7 @@ namespace SeleniumDemoApplication.Src.Config
             driver.Manage().Timeouts().ImplicitWait= TimeSpan.FromSeconds(20);
             return driver;
         }
+
         public void CloseWebDriver(IWebDriver driver) => driver.Quit();
     }
 }

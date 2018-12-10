@@ -109,23 +109,34 @@
     <Compile Include="Src\Events\HoverEvents.cs" />
     <Compile Include="Src\Events\ClickEvents.cs" />
     <Compile Include="Src\Events\SwitchEvents.cs" />
-    <Compile Include="Src\Feature Files\DemoPage.feature.cs">
+    <Compile Include="Src\Events\WaitEvents.cs" />
+    <Compile Include="Src\Feature Files\DemoPageNegative.feature.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>DemoPage.feature</DependentUpon>
+      <DependentUpon>DemoPageNegative.feature</DependentUpon>
+    </Compile>
+    <Compile Include="Src\Feature Files\DemoPageTests.feature.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DemoPageTests.feature</DependentUpon>
     </Compile>
     <Compile Include="Src\Hooks\WebDriverHooks.cs" />
     <Compile Include="Src\Page Elements\DemoPageElements.cs" />
     <Compile Include="Src\Pages\Demo\DemoAction.cs" />
     <Compile Include="Src\Pages\Demo\DemoStepDefinitions.cs" />
     <Compile Include="Src\Pages\Demo\DemoValidation.cs" />
+    <Compile Include="Src\Pages\Shared Steps\DemoSharedSteps.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-    <None Include="Src\Feature Files\DemoPage.feature">
+    <None Include="Src\Feature Files\DemoPageNegative.feature">
       <Generator>SpecFlowSingleFileGenerator</Generator>
-      <LastGenOutput>DemoPage.feature.cs</LastGenOutput>
+      <LastGenOutput>DemoPageNegative.feature.cs</LastGenOutput>
+    </None>
+    <None Include="Src\Feature Files\DemoPageTests.feature">
+      <Generator>SpecFlowSingleFileGenerator</Generator>
+      <LastGenOutput>DemoPageTests.feature.cs</LastGenOutput>
     </None>
   </ItemGroup>
   <ItemGroup>

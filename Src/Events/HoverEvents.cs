@@ -16,7 +16,8 @@ namespace SeleniumDemoApplication.Src.Events
         {
             Actions actions = new Actions(driver);
             actions.MoveToElement(element);
-            actions.Perform();
+            actions.Click();
+            actions.Build().Perform();
         }
     }
 }
