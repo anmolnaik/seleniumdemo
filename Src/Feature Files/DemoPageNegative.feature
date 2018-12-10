@@ -16,3 +16,4 @@ Scenario: 03_Amazon Login
 	Given Go To Login Page
 	When Enter blank Email id
 	Then I am not able to login
+Scenario: 04_Amazon Login
