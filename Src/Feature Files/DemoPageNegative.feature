@@ -14,5 +14,14 @@ Scenario: 02_Amazon Login
 
 Scenario: 03_Amazon Login
 	Given Go To Login Page
-	When Enter blank Email id
-	Then I am not able to logins
+	When Enter blank Email id	
+
+Scenario: Table Structure
+	When Sameple data of table
+		| Name	| Age |
+		| Anmol |  26 |
+
+Scenario: Json Data Read and write
+	Given Read data from jsonfile
+	Then write data to json file
+	Then A customer updates color of product from Black to Red

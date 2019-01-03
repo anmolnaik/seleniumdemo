@@ -16,6 +16,6 @@ namespace SeleniumDemoApplication.Src.Pages.Shared_Steps
             Given("Go To Login Page");
             Then($"Enter {username} and {password}");
             When("I press login");
-        }              
+        }
     }
 }

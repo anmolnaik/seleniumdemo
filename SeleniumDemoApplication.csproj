@@ -50,6 +50,11 @@
     <Reference Include="Mono.Cecil">
       <HintPath>..\..\..\..\..\Downloads\NUnit.Framework-3.11.0\bin\net45\Mono.Cecil.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.12.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="nunit.engine, Version=3.7.0.0, Culture=neutral, PublicKeyToken=2638cd05610744eb, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\Downloads\NUnit.Framework-3.11.0\bin\net45\nunit.engine.dll</HintPath>
@@ -105,6 +110,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Src\Config\Employee.cs" />
     <Compile Include="Src\Config\WebDriverSetup.cs" />
     <Compile Include="Src\Events\HoverEvents.cs" />
     <Compile Include="Src\Events\ClickEvents.cs" />
@@ -121,11 +127,14 @@
       <DependentUpon>DemoPageTests.feature</DependentUpon>
     </Compile>
     <Compile Include="Src\Hooks\WebDriverHooks.cs" />
+    <Compile Include="Src\Model\DataContainer.cs" />
+    <Compile Include="Src\Model\JsonSettings.cs" />
     <Compile Include="Src\Page Elements\DemoPageElements.cs" />
     <Compile Include="Src\Pages\Demo\DemoAction.cs" />
     <Compile Include="Src\Pages\Demo\DemoStepDefinitions.cs" />
     <Compile Include="Src\Pages\Demo\DemoValidation.cs" />
     <Compile Include="Src\Pages\Shared Steps\DemoSharedSteps.cs" />
+    <Compile Include="Src\Web Driver\DriverConfig.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -138,6 +147,7 @@
       <Generator>SpecFlowSingleFileGenerator</Generator>
       <LastGenOutput>DemoPageTests.feature.cs</LastGenOutput>
     </None>
+    <None Include="Src\Json\LoginData.json" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />

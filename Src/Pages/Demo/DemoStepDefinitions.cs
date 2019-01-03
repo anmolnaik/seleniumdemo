@@ -1,6 +1,11 @@
 ﻿using OpenQA.Selenium;
+using SeleniumDemoApplication.Src.Config;
 using SeleniumDemoApplication.Src.Events;
+using SeleniumDemoApplication.Src.Model;
+using SeleniumDemoApplication.Src.Web_Driver;
 using TechTalk.SpecFlow;
+using TechTalk.SpecFlow.Assist;
+
 
 namespace SeleniumDemoApplication.Src.Pages.Demo
 {
@@ -20,6 +25,7 @@ namespace SeleniumDemoApplication.Src.Pages.Demo
         [Given(@"Go To Login Page")]
         public void GivenGoToLoginPage()
         {
+            demoAction.CloseExtraTabsIfPresent(driver);
             demoAction.OpenUrl(driver);
             demoAction.LogIn(driver);
         }    
@@ -68,7 +74,6 @@ namespace SeleniumDemoApplication.Src.Pages.Demo
             demoAction.SearchProduct(driver, product);
         }
 
-
         [When(@"Click on Search button")]
         public void WhenClickOnSearchButton()
         {
@@ -113,8 +118,9 @@ namespace SeleniumDemoApplication.Src.Pages.Demo
         public void ThenValidateUpdatedProductPrice()
         {
             demoAction.GoToCartButton(driver);
-            demoValidation.ValidateUpdatedCartProductPrice(ScenarioContext.Current.Get<decimal>("firstPrice"),demoAction.GetProductUpdatePriceCart(driver));            
+            demoValidation.ValidateUpdatedCartProductPrice(demoAction.GetProductNewPrice(driver),demoAction.GetProductUpdatePriceCart(driver));            
         }
+
         [Then(@"Select product (.*)")]
         public void ThenSelectForProduct(string product)
         {
@@ -168,6 +174,14 @@ namespace SeleniumDemoApplication.Src.Pages.Demo
             demoAction.ClickOnViewWishList(driver);
             demoValidation.ValidateProductInWishList(driver,product);
         }
+
+        [Then(@"Customer closes tab and log out from website")]
+        public void ThenCustomerClosesTabAndLogOutFromWebsite()
+        {
+            driver.CloseTabAndSwitchBack();
+            demoAction.ClickLogOut(driver);
+        }
+
         [Then(@"Enter incorrect emailid (.*)")]
         public void ThenEnterIncorrectEmailid(string username)
         {
@@ -183,6 +197,7 @@ namespace SeleniumDemoApplication.Src.Pages.Demo
             demoAction.ClickContinueLogin(driver);
             demoAction.EnterPassword(driver, password);
         }
+
         [When(@"Enter blank Email id")]
         public void WhenEnterBlankEmailId()
         {
@@ -196,6 +211,7 @@ namespace SeleniumDemoApplication.Src.Pages.Demo
             demoAction.ClickContinueLogin(driver);
             demoValidation.ValidateBlankEmail(driver);
         }
+
         [When(@"I clicked on Your Orders")]
         public void WhenIClickedOnYourOrders()
         {
@@ -221,7 +237,6 @@ namespace SeleniumDemoApplication.Src.Pages.Demo
         [Then(@"Account password update")]
         public void ThenAccountPasswordUpdate()
         {
-
             demoAction.EditPassword(driver);
             demoAction.EditPasswordUpdate(driver);
             demoAction.EditPasswordSaveChanges(driver);
@@ -241,7 +256,6 @@ namespace SeleniumDemoApplication.Src.Pages.Demo
         {
             demoAction.HomePageDropDownLink(driver);
             demoAction.BackToHomePage(driver);
-
         }
 
         [Then(@"Home Page Prime vedio link")]
@@ -255,11 +269,13 @@ namespace SeleniumDemoApplication.Src.Pages.Demo
         {
             demoAction.AddToCartFromProductFromWishList(driver);            
         }
+
         [Then(@"Validate message Product added to cart")]
         public void ThenValidateMessageProductAddedToCart()
         {
             demoValidation.ValidateProductInWishListAddedToCart(driver);
         }
+
         [Then(@"Go to cart from home page")]
         public void ThenGoToCartFromHomePage()
         {
@@ -271,7 +287,33 @@ namespace SeleniumDemoApplication.Src.Pages.Demo
         {
             demoValidation.ValidateProductInWishListAddedToCart(driver,product);
             demoAction.DeleteProductFromCart(driver);
-        }        
+        }
 
+        [When(@"Sameple data of table")]
+        public void WhenSamepleDataOfTable(Table table)
+        {
+            Employee details = table.CreateInstance<Employee>();
+            System.Console.WriteLine(details.name);
+            System.Console.WriteLine(details.age);
+        }
+
+        [Given(@"Read data from jsonfile")]
+        public void GivenReadDataFromJsonfile()
+        {
+            DataContainer.DataRead();           
+        }
+
+        [Then(@"write data to json file")]
+        public void ThenWriteDataToJsonFile()
+        {
+            DataContainer.SearchProduct("Nokia","10","Black");
+            DataContainer.DisplayData();            
+        }
+
+        [Then(@"A customer updates color of product from (.*) to (.*)")]
+        public void ThenACustomerUpdatesColorOfProductFromBlackToRed(string oldColor,string newColor)
+        {
+            DataContainer.UpdateColor(oldColor,newColor);
+        }
     }
 }

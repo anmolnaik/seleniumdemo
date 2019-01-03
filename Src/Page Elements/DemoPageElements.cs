@@ -21,7 +21,7 @@ namespace SeleniumDemoApplication.Src.Page_Elements
         public static By ProductName = By.XPath("//h2[contains(text(),'Apple iPhone')]");
         public static By HomePagePrice = By.XPath("//ul[@id='s-results-list-atf']//li[@id='result_0']//span[@class='currencyINR']/parent::span");
         public static By HomePageProduct(string product) => By.XPath("//h2[contains(text(),'" + product + "')]");
-        public static By ProductPagePrice = By.XPath("//span[@id='priceblock_ourprice']");
+        public static By ProductPagePrice = By.XPath("//span[@id='priceblock_dealprice']");        
         public static By ProductCustomPrice = By.XPath("//div[@id='sc-buy-box']//span[@class='currencyINR']/parent::span");
         public static By ProductQuantityOnProductPage = By.Name("quantity");
         public static By AddToCartFromProductPage = By.XPath("//input[@name='submit.add-to-cart']");
@@ -63,6 +63,8 @@ namespace SeleniumDemoApplication.Src.Page_Elements
         public static By AddToCartFromWishListMessage => By.XPath("//h4[contains(text(),'Added to Cart')]");
 
         public static By CartOnHomePage => By.XPath("//span[contains(text(),'Cart')]");
+
+        public static By ProductOldPrice => By.XPath("//div[@class='sc-list-item-content']//span[contains(@class,'sc-price')]");
 
         public static By LinkToDeleteFromCart => By.XPath("//input[contains(@name,'submit.delete')]");
 

@@ -7,14 +7,20 @@ Scenario: 01_Search Product
 	When Click on Search button
 	Then Validate first product found
 
-Scenario: 02_Validate Product Price on Home page and poduct page
+Scenario: 02_Validate Price Filter 
+	Given Open Website Url
+	Then Search for phone
+	When Click on Search button
+	Then Validate price list of product under Under ₹1,000	
+
+Scenario: 03_Validate Product Price on Home page and poduct page
 	Given Open Website Url
 	Then Search for Realme U1
 	When Click on Search button
 	Then Get the price on current product Realme U1
 	And validate on product page
 
-Scenario: 03_Validate deletion of product
+Scenario: 04_Validate deletion of product
 	Given Open Website Url
 	Then Search for Nokia 105 (Black)
 	When Click on Search button
@@ -23,7 +29,7 @@ Scenario: 03_Validate deletion of product
 	Then Delete product added to cart
 	And Validate Cart is Empty
 
-Scenario:  04_Validate Product price in Cart
+Scenario: 05_Validate Product price in Cart
 	Given Open Website Url
 	Then Search for Nokia 105 (Black)
 	When Click on Search button
@@ -32,18 +38,12 @@ Scenario:  04_Validate Product price in Cart
 	And Product added to cart
 	Then Validate updated product price
 
-Scenario: 05_Validate Brand Filter 
+Scenario: 06_Validate Brand Filter 
 	Given Open Website Url
 	Then Search for Samsung
 	When Click on Search button
 	Then Select filter for Samsung
 	And Validate list of Samsung products
-
-Scenario: 06_Validate Price Filter 
-	Given Open Website Url
-	Then Search for phone
-	When Click on Search button
-	Then Validate price list of product under Under ₹1,000
 
 Scenario: 07_Add Product to Wishlist 
 	Given Go to url and login username : anmol.naik15@gmail.com password : Anmol@922 
@@ -51,11 +51,10 @@ Scenario: 07_Add Product to Wishlist
 	When Click on Search button
 	Then Get the price on current product Nokia 105 (Black)	
 	Then Product added to wishlist Nokia 105 (Black)
+	Then Customer closes tab and log out from website
 
 Scenario: 08_Amazon Login
-	Given Go To Login Page
-	Then Enter anmol.naik15@gmail.com and Anmol@922
-	When  I press login 
+	Given Go to url and login username : anmol.naik15@gmail.com password : Anmol@922  
 	Then Log out from website
 
 Scenario: 09_Edit profile for Amazon
@@ -63,12 +62,14 @@ Scenario: 09_Edit profile for Amazon
 	When I clicked on Your Orders
 	And  I clicked on login and security
 	Then I update Roks
+	Then Log out from website
 
 Scenario: 10_Update password for Amazon
 	Given Go to url and login username : anmol.naik15@gmail.com password : Anmol@922 
 	When I clicked on Your Orders
 	And  I clicked on login and security
 	Then Account password update
+	Then Log out from website	
 
 Scenario: 11_Validate Prime link
 	Given Open Website Url
@@ -78,7 +79,7 @@ Scenario: 11_Validate Prime link
 Scenario: 12_Validate Prime Vedio link
 	Given Open Website Url
 	Then  Home Page Prime vedio link 
-
+	
 Scenario: 13_Add product from wishlist to cart
 	Given Go to url and login username : anmol.naik15@gmail.com password : Anmol@922 
 	Then Search for Nokia 105 (Black)
@@ -87,10 +88,12 @@ Scenario: 13_Add product from wishlist to cart
 	Then Product added to wishlist Nokia 105 (Black)
 	Then Add product to cart from wishlist
 	And Validate message Product added to cart
+	Then Log out from website
 
 Scenario: 14_Validate previously added product to cart
 	Given Go to url and login username : anmol.naik15@gmail.com password : Anmol@922 
 	Then Go to cart from home page
 	And Validate and remove product from cart Nokia 105 (Black)
+	Then Log out from website
 	
 
