@@ -77,7 +77,7 @@ namespace SeleniumDemoApplication.Src.Pages.Demo
         [When(@"Click on Search button")]
         public void WhenClickOnSearchButton()
         {
-            demoAction.ClickOnSearch(driver);
+            demoAction.ClickSearch(driver);
         }
 
         [Then(@"Validate first product found")]
@@ -90,7 +90,7 @@ namespace SeleniumDemoApplication.Src.Pages.Demo
         public void ThenGetThePriceOnCurrentProduct(string product)
         {
             ScenarioContext.Current.Add("firstPrice", demoAction.GetProductPrice(driver));
-            demoAction.ClickOnProductPage(driver,product);
+            demoAction.ClickProductPage(driver,product);
         }
 
         [Then(@"validate on product page")]
@@ -124,7 +124,7 @@ namespace SeleniumDemoApplication.Src.Pages.Demo
         [Then(@"Select product (.*)")]
         public void ThenSelectForProduct(string product)
         {
-            demoAction.ClickOnProductPage(driver, product);
+            demoAction.ClickProductPage(driver, product);
             driver.SwitchTab();
         }
 
@@ -159,10 +159,16 @@ namespace SeleniumDemoApplication.Src.Pages.Demo
             demoValidation.ValidateBrandFilterList(driver,product);            
         }
 
+        [Then(@"Select mobile brand name (.*)")]
+        public void ThenSelectMobileBrandNameAndroid(string osName)
+        {
+            demoAction.ClickOperatingSystemName(driver,osName);
+        }
+
         [Then(@"Validate price list of product under Under ₹1,000")]
         public void ThenValidatePriceListOfProductUnderUnder()
         {
-            demoAction.ClickOnPriceRange(driver);
+            demoAction.ClickPriceRange(driver);
             demoValidation.ValidatePriceFilterList(driver);
         }
 
@@ -171,7 +177,7 @@ namespace SeleniumDemoApplication.Src.Pages.Demo
         {
             driver.SwitchTab();
             demoAction.AddToWishListFromProduct(driver);
-            demoAction.ClickOnViewWishList(driver);
+            demoAction.ClickViewWishList(driver);
             demoValidation.ValidateProductInWishList(driver,product);
         }
 
@@ -215,7 +221,7 @@ namespace SeleniumDemoApplication.Src.Pages.Demo
         [When(@"I clicked on Your Orders")]
         public void WhenIClickedOnYourOrders()
         {
-            demoAction.ClickOnYourOrder(driver);
+            demoAction.ClickYourOrder(driver);
         }
 
         [When(@"I clicked on login and security")]
@@ -279,7 +285,7 @@ namespace SeleniumDemoApplication.Src.Pages.Demo
         [Then(@"Go to cart from home page")]
         public void ThenGoToCartFromHomePage()
         {
-            demoAction.ClickOnCartOnHomePage(driver);
+            demoAction.ClickCartThenHomePage(driver);
         }
 
         [Then(@"Validate and remove product from cart (.*)")]

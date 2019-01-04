@@ -6,7 +6,6 @@ namespace SeleniumDemoApplication.Src.Events
 {
     public static class HoverEvents
     {
-        public static IJavaScriptExecutor js;
         public static void MoveToElement(this IWebDriver driver, IWebElement element)
         {
             Actions actions = new Actions(driver);
@@ -23,10 +22,6 @@ namespace SeleniumDemoApplication.Src.Events
             actions.Build().Perform();
         }
 
-        public static void JScriptMoveToElement(this IWebDriver driver, IWebElement element)
-        {
-            js = (IJavaScriptExecutor)driver;
-            js.ExecuteScript("arguments[0].scrollIntoView(true);", element);
-        }
+        public static void JScriptMoveToElement(this IWebDriver driver, IWebElement element) => ((IJavaScriptExecutor)driver).ExecuteScript("arguments[0].scrollIntoView(true);", element);
     }
 }

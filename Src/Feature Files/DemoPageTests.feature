@@ -11,6 +11,7 @@ Scenario: 02_Validate Price Filter
 	Given Open Website Url
 	Then Search for phone
 	When Click on Search button
+	Then Select mobile brand name Android
 	Then Validate price list of product under Under ₹1,000	
 
 Scenario: 03_Validate Product Price on Home page and poduct page

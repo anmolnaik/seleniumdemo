@@ -10,27 +10,30 @@ namespace SeleniumDemoApplication.Src.Pages.Demo
     class DemoAction
     {                     
         public void ClickLogin(IWebDriver driver) => driver.FindElement(DemoPageElements.LoginButton).Click();
+
         public void ClickLogOut(IWebDriver driver)
         {
             Thread.Sleep(2000);
             driver.MoveToElement(driver.FindElement(DemoPageElements.YourOrder));            
             driver.MoveToElementAndClick(driver.FindElement(DemoPageElements.SignOut));
         }
+
         public void CloseExtraTabsIfPresent(IWebDriver driver)
         {
-            String mainWindow = driver.CurrentWindowHandle;         
+            var mainWindow = driver.CurrentWindowHandle;         
             driver.WindowHandles.Where(w => w != mainWindow).ToList().ForEach(w => { driver.SwitchTo().Window(w); driver.Close(); });
             driver.SwitchTo().Window(mainWindow);
         }
         public void ClickContinueLogin(IWebDriver driver) => driver.FindElement(DemoPageElements.Continue).Click();
+
         public void OpenUrl(IWebDriver driver) => driver.Navigate().GoToUrl(DemoPageElements.URL);
         public void EnterPassword(IWebDriver driver,string password) => driver.FindElement(DemoPageElements.Password).SendKeys(password);
         public void LogIn(IWebDriver driver) => driver.FindElement(DemoPageElements.SignIn).Click();
         public void EnterUsername(IWebDriver driver, string username) => driver.FindElement(DemoPageElements.Username).SendKeys(username);
         public void SearchProduct(IWebDriver driver,string product) => driver.FindElement(DemoPageElements.SearchProduct).SendKeys(product);
-        public void ClickOnSearch(IWebDriver driver) => driver.FindElement(DemoPageElements.Search).Click();
+        public void ClickSearch(IWebDriver driver) => driver.FindElement(DemoPageElements.Search).Click();
         public decimal GetProductPrice(IWebDriver driver) => Convert.ToDecimal(driver.FindElement(DemoPageElements.HomePagePrice).Text);
-        public void ClickOnProductPage(IWebDriver driver, string product) => driver.FindElement(DemoPageElements.HomePageProduct(product)).Click();
+        public void ClickProductPage(IWebDriver driver, string product) => driver.FindElement(DemoPageElements.HomePageProduct(product)).Click();
         public decimal GetProductPagePrice(IWebDriver driver) => Convert.ToDecimal(driver.FindElement(DemoPageElements.ProductPagePrice).Text);
         public void UpdateProductQuantity(IWebDriver driver) => driver.FindElement(DemoPageElements.ProductQuantityOnProductPage).SendKeys("2");
         public void AddToCartFromProduct(IWebDriver driver) => driver.FindElement(DemoPageElements.AddToCartFromProductPage).Click();
@@ -39,7 +42,7 @@ namespace SeleniumDemoApplication.Src.Pages.Demo
         public void DeleteFromCart(IWebDriver driver) => driver.FindElement(DemoPageElements.DeleteFromCart).Click();
         public string EmptyCartMessage(IWebDriver driver) => driver.FindElement(DemoPageElements.EmptyCartMessageInCart).Text;
         public void MoveAndSelectFilterForBrand(IWebDriver driver, string product) => driver.MoveToElementAndClick(driver.FindElement(DemoPageElements.BrandFilterSelect(product)));
-        public void ClickOnPriceRange(IWebDriver driver)
+        public void ClickPriceRange(IWebDriver driver)
         {
             var retry = 0;
             do
@@ -49,12 +52,11 @@ namespace SeleniumDemoApplication.Src.Pages.Demo
                 Thread.Sleep(1000);
             }
             while (driver.FindElement(DemoPageElements.PriceFilterSelect).Displayed && driver.FindElement(DemoPageElements.PriceFilterSelect) != null && retry++ < 5);
-
             driver.FindElement(DemoPageElements.PriceFilterSelect).Click();
         }
         public void AddToWishListFromProduct(IWebDriver driver) => driver.FindElement(DemoPageElements.AddToWishListButton).Click();
-        public void ClickOnViewWishList(IWebDriver driver) => driver.FindElement(DemoPageElements.ViewWishList).Click();
-        public void ClickOnYourOrder(IWebDriver driver)
+        public void ClickViewWishList(IWebDriver driver) => driver.FindElement(DemoPageElements.ViewWishList).Click();
+        public void ClickYourOrder(IWebDriver driver)
         {            
             var retry = 0;            
             do
@@ -67,17 +69,23 @@ namespace SeleniumDemoApplication.Src.Pages.Demo
                 driver.FindElement(DemoPageElements.InternalLinkYourAccount).Click();
         }
         public void ClickAccountLoginAndSecurity(IWebDriver driver) => driver.FindElement(DemoPageElements.LoginAndSecurity).Click();
+
         public decimal GetProductNewPrice(IWebDriver driver) => Convert.ToDecimal(driver.FindElement(DemoPageElements.ProductOldPrice).Text);
+
         public void EditName(IWebDriver driver)
         {
             Thread.Sleep(4000);
             driver.FindElement(DemoPageElements.ClickOnNameEdit).Click();
         }
+
         public void EditNameSendData(IWebDriver driver, string name)
         {
             driver.FindElement(DemoPageElements.SendNameToEdit).Clear();
             driver.FindElement(DemoPageElements.SendNameToEdit).SendKeys(name);
         }
+
+        public void ClickOperatingSystemName(IWebDriver driver, string osName) => driver.MoveToElementAndClick(driver.FindElement(DemoPageElements.OperatingSystemName(osName)));        
+
         public void EditNameSaveChanges(IWebDriver driver)
         {
             if (driver.FindElement(DemoPageElements.ClickOnSaveChanges).Displayed)
@@ -87,30 +95,41 @@ namespace SeleniumDemoApplication.Src.Pages.Demo
             }
             
         }
+
         public void EditPassword(IWebDriver driver) => driver.FindElement(DemoPageElements.ClickOnPasswordEdit).Click();
+
         public void EditPasswordUpdate(IWebDriver driver)
         {
             driver.FindElement(DemoPageElements.EditPasswordOld).SendKeys("Anmol@922");
             driver.FindElement(DemoPageElements.EditPasswordNew).SendKeys("Anmol@922");
             driver.FindElement(DemoPageElements.EditPasswordNewCheck).SendKeys("Anmol@922");
         }
+
         public void EditPasswordSaveChanges(IWebDriver driver)
         {
             Thread.Sleep(2000);
             driver.FindElement(DemoPageElements.ClickOnSaveChanges).Click();
         }
+
         public void LoginSecurityDone(IWebDriver driver) => driver.FindElement(DemoPageElements.LoginSecurityDoneButton).Click();
+
         public void HomePageLogoPrimeLink(IWebDriver driver) => driver.FindElement(DemoPageElements.LogoPrimeLink).Click();
+
         public void HomePageDropDownLink(IWebDriver driver) => driver.FindElement(DemoPageElements.DropDownPrimeLink).Click();
+
         public void HomePagePrimeVideoLink(IWebDriver driver)
         {
             Thread.Sleep(1000);
             driver.MoveToElement(driver.FindElement(DemoPageElements.YourOrder));
             driver.FindElement(DemoPageElements.InternalLinkYourPrimeVideo).Click();
         }
+
         public void BackToHomePage(IWebDriver driver) => driver.Navigate().Back();
+
         public void AddToCartFromProductFromWishList(IWebDriver driver) => driver.FindElement(DemoPageElements.AddToCartButtonFromWishList).Click();
-        public void ClickOnCartOnHomePage(IWebDriver driver) => driver.FindElement(DemoPageElements.CartOnHomePage).Click();
+
+        public void ClickCartThenHomePage(IWebDriver driver) => driver.FindElement(DemoPageElements.CartOnHomePage).Click();
+
         public void DeleteProductFromCart(IWebDriver driver) => driver.FindElement(DemoPageElements.LinkToDeleteFromCart).Click();
     }
 }
